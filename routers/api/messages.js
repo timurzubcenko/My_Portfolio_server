@@ -30,4 +30,16 @@ router.get('/', (req, res) => {
         })
 })
 
+router.delete('/delete/:id', async (req, res) => {
+    try {
+
+        const message = await Message.findOneAndDelete({ _id: req.params.id })
+
+        res.json(message)
+
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 module.exports = router
